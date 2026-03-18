@@ -38,7 +38,7 @@ int Game::getPlayers() const {
 }
 
 const Player* Game::getPlayer(int p) const {
-    if (p < 0 || p>=players_added) {
+    if (p < 0 || p >= players_added) {
         throw logic_error("Invalid player");
     }
     return player_list[p];
