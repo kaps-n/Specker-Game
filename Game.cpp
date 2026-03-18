@@ -38,10 +38,21 @@ int Game::getPlayers() const {
 }
 
 const Player* Game::getPlayer(int p) const {
+    if (p < 0 || p>=players_added) {
+        throw logic_error("Invalid player");
+    }
     return player_list[p];
 }
 
 void Game::play(std::ostream &out) {
+    if (players_added == 0){
+        throw logic_error("Cannot start a game with 0 players");
+    }
+
+    if (heaps_added == 0) {
+        throw logic_error("Cannot start a game with 0 heaps");
+    }
+
     State state(heaps_added, heap_coins, players_added);
 
     while(true)
