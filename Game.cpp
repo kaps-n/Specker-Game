@@ -20,8 +20,11 @@ Game::~Game() {
 }
 
 void Game::addHeap(int coins) {
-    if (coins < 0 || heaps_added >= heaps) {
+    if (heaps_added >= heaps) {
         throw logic_error("Max number of heaps already reached");
+    }
+    if (coins < 0) {
+        throw logic_error("Invalid coins");
     }
     heap_coins[heaps_added++] = coins;
 }
